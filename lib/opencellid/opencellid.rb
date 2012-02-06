@@ -6,14 +6,21 @@ require_relative 'measure'
 require_relative 'bbox'
 require_relative 'error'
 
+# The module for the opencellid-client gem
 module Opencellid
 
   # The main entry for this library. Each method maps to the corresponding method of the
   # OpenCellId API defined at {http:://www.opencellid.org/api}.
   class Opencellid
 
+    private
+    #the default URI used in all requests
     DEFAULT_URI = "http://www.opencellid.org"
+
+    # the list of parameters allowed in the options for get_cells_in_area
     GET_IN_AREA_ALLOWED_PARAMS = [:limit, :mcc, :mnc]
+
+    public
     attr_reader :key
 
     # @param key [String] the API key used for "write" operations. Defaults to nil

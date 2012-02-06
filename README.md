@@ -17,7 +17,7 @@ Usage
 
 First of all `require 'opencellid'` in your application.
 
-Read functionality (i.e. methods that only query the database generally do not require an API key), write methods instead
+Read functionality (i.e. methods that only query the database) generally do not require an API key, write methods instead
 do require an API key, so if you do not have one, head to the [OpenCellID website](http://www.opencellid.org/) and get one
 for yourself.
 
@@ -35,7 +35,7 @@ got from the response, otherwise an error object can be extracted from the respo
 methods to obtain the error code and human readable description.
 
 Querying Cells
-==============
+--------------
 
 Cells can be queried using a combination of parameters: the cell id, the mnc (operator) and mcc (country) code or the local area
 code lac. For a more detailed description of these parameters please refere to the OpenCellID site.
@@ -65,7 +65,7 @@ response = opencellid.get_cells_in_area(bbox, :limit => 10, :mnc => 5)
 cells = response.cells`
 
 Adding and Deleting Measures
-============================
+----------------------------
 
 Adding, deleting and listing "own" measures (i.e. measures inserted by the same user) require that an API key is
 made available to the library at initialization time.
@@ -91,6 +91,6 @@ measures = response.measures`
 
 
 Bulk addition of measures
-=========================
+-------------------------
 
 Bulk addition of measure by uploading a CSV formatted file to the OpenCellID server is not yet supported by this library.

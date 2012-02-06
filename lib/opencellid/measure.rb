@@ -6,6 +6,7 @@ module Opencellid
   class Measure
 
     # The format used by the OpenCellId API to pass date/time information
+    # @private
     DATE_FORMAT = "%a %b %d %H:%M:%S %z %Y"
 
     attr_accessor :lat, :lon, :taken_by, :taken_on, :id, :signal
