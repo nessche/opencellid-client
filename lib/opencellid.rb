@@ -1,2 +1,7 @@
 require 'opencellid/opencellid'
+require 'opencellid/cell'
 require 'opencellid/version'
+require 'opencellid/measure'
+require 'opencellid/error'
+require 'opencellid/response'
+require 'opencellid/bbox'

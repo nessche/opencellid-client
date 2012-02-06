@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsp stat="ok">
+  <cell lat="60.3276113" mcc="244" lon="24.8689952" nbSamples="5" cellId="118135" mnc="91" lac="" range="6000"/>
+</rsp>

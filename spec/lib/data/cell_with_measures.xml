@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsp stat="ok">
+  <cell lat="60.3276113" mcc="244" lon="24.8689952" cellId="118135" nbSamples="5" mnc="91" lac="" range="6000">
+    <measure lat="60.3277783333333" lon="24.8693505" takenOn="Fri Jul 22 15:02:17 +0200 2011" takenBy="4207"></measure>
+    <measure lat="60.3275705" lon="24.8689813333333" takenOn="Sun Aug 07 23:22:04 +0200 2011" takenBy="4207"></measure>
+    <measure lat="60.3273111666667" lon="24.867736" takenOn="Mon Aug 08 11:10:47 +0200 2011" takenBy="4207"></measure>
+    <measure lat="60.3278625" lon="24.8698973333333" takenOn="Mon Aug 08 12:31:59 +0200 2011" takenBy="4207"></measure>
+    <measure lat="60.327534" lon="24.8690108333333" takenOn="Mon Aug 08 12:32:03 +0200 2011" takenBy="4207"></measure>
+  </cell>
+</rsp>

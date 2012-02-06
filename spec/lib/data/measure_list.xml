@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<measures total="2">
+  <measure lat="60.5" measured_at="Fri Feb 03 15:33:43 +0100 2012" mcc="1" lon="30.3" signal="" cellId="123456" mnc="1" id="56198375" lac="9000"/>
+  <measure lat="60.6" measured_at="Fri Feb 03 15:43:06 +0100 2012" mcc="1" lon="30.5" signal="" cellId="123457" mnc="1" id="56198417" lac="9000"/>
+</measures>
