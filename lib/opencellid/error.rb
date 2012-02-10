@@ -15,6 +15,7 @@ module Opencellid
       @code = code
     end
 
+    # Parses the given XML element extracting the information into the corresponding Error object
     # @param element [REXML::Element] an XML element containing the error
     # @return [Error] the error object created by parsing the XML element
     def self.from_element(element)

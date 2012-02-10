@@ -17,16 +17,19 @@ module Opencellid
       @ok = ok
     end
 
+    # Tells whether the response is a successful response or not
     # @return [bool] `true` if the response is a successful response
     def ok?
       @ok
     end
 
+    # Tells whether the response is a failure response or not
     # @return [bool] `true` if the response is a failure response
     def failed?
       not @ok
     end
 
+    # Parses the string containing the response as XML and returns the corresponding Response object
     # @param string [String] a string containing the XML response received from the server
     # @return [Response] the Response object obtained by parsing the XML file
     def self.from_xml(string)

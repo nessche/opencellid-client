@@ -131,7 +131,19 @@ XML
 
     end
 
+    describe "to_lng_lat" do
 
+      before do
+        @cell = Cell.new(1,2,3,4)
+        @cell.lat = 60.3276113
+        @cell.lon = 24.8689952
+      end
+
+      it "should return the correct array" do
+        @cell.to_lng_lat.should == [24.8689952,60.3276113]
+      end
+
+    end
 
   end
 

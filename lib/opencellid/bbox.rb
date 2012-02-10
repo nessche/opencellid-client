@@ -30,5 +30,4 @@ module Opencellid
   end
 
 
-
 end

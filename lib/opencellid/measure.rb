@@ -21,6 +21,7 @@ module Opencellid
     end
 
 
+    # Parses the given XML element extracting the information into the corresponding Measure object
     # @param element [REXML::Element] the XML element containing the representation of the measurement
     # @return [Measure] the Measure object obtained by parsing the XML
     def self.from_element(element)
