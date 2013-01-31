@@ -15,7 +15,7 @@ module Opencellid
 
     private
     #the default URI used in all requests
-    DEFAULT_URI = "http://www.opencellid.org"
+    DEFAULT_URI = 'http://www.opencellid.org'
 
     # the list of parameters allowed in the options for get_cells_in_area
     GET_IN_AREA_ALLOWED_PARAMS = [:limit, :mcc, :mnc]
@@ -32,7 +32,7 @@ module Opencellid
     # @param[Cell] cell the object containing the parameters to be used in searching the database
     # the result received from the server
     def get_cell(cell)
-      query_cell_info "/cell/get", cell
+      query_cell_info '/cell/get', cell
     end
 
     # Retrieves the cell information and the measures used to calculate its position based on the parameters
@@ -40,7 +40,7 @@ module Opencellid
     # @param[Cell] cell the object containing the parameters used to search the cell database
     # @return[Response] the result received from the server
     def get_cell_measures(cell)
-      query_cell_info "/cell/getMeasures", cell
+      query_cell_info '/cell/getMeasures', cell
     end
 
     # Retrieves all the cells located inside the bounding box and whose parameters match the ones specified in the options
@@ -49,11 +49,11 @@ module Opencellid
     # of results), `:mnc` specifying the mnc value of the desired cells and `:mcc` specifying the mcc value of the desired cells
     # @return [Response] the result received from the server
     def get_cells_in_area(bbox, options = {})
-      raise ArgumentError, "options must be a Hash" unless options.is_a? Hash
-      raise ArgumentError, "bbox must be of type BBox" unless bbox.is_a? BBox
+      raise ArgumentError, 'options must be a Hash' unless options.is_a? Hash
+      raise ArgumentError, 'bbox must be of type BBox' unless bbox.is_a? BBox
       params = {bbox: bbox.to_s, fmt: 'xml'}
       params.merge!(options.reject { |key| !GET_IN_AREA_ALLOWED_PARAMS.include? key})
-      execute_request_and_parse_response "/cell/getInArea", params
+      exec_req_and_parse_response '/cell/getInArea', params
     end
 
     # Adds a measure (specified by the measure object) to a given cell (specified by the cell object). In case of
@@ -71,13 +71,13 @@ module Opencellid
       params[:lon] = measure.lon
       params[:signal] = measure.signal if measure.signal
       params[:measured_at] = measure.taken_on if measure.taken_on
-      execute_request_and_parse_response "/measure/add", params
+      exec_req_and_parse_response "/measure/add", params
     end
 
     # List the measures added with a given API key.
     # @return [Response] the result received from the server
     def list_measures
-      execute_request_and_parse_response "/measure/list"
+      exec_req_and_parse_response "/measure/list"
     end
 
     # Deletes a measure previously added with the same API key.
@@ -85,7 +85,7 @@ module Opencellid
     # @return [Response] the result received from the server
     def delete_measure(measure_id)
       raise ArgumentError,"measure_id cannot be nil" unless measure_id
-      execute_request_and_parse_response "/measure/delete", {id: measure_id}
+      exec_req_and_parse_response "/measure/delete", {id: measure_id}
     end
 
   protected
@@ -93,10 +93,10 @@ module Opencellid
     def query_cell_info(path, cell)
       raise ArgumentError, "cell must be a Cell" unless cell.is_a? Cell
       params = cell.to_query_hash
-      execute_request_and_parse_response path, params
+      exec_req_and_parse_response path, params
     end
 
-    def execute_request_and_parse_response(path, params = {})
+    def exec_req_and_parse_response(path, params = {})
       params[:key] = @key if @key
       uri = URI(DEFAULT_URI + path)
       uri.query = URI.encode_www_form params if params.count > 0

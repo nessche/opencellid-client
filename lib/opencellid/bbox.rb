@@ -11,10 +11,10 @@ module Opencellid
     # @param latmax [Float] latmax the latitude of the NE corner of the box
     # @param lonmax [Float] lonmax the longitude of the NE corner of the box
     def initialize(latmin, lonmin, latmax, lonmax)
-      raise ArgumentError, "latmin must not be nil" unless latmin
-      raise ArgumentError, "lonmin must not be nil" unless lonmin
-      raise ArgumentError, "latmax must not be nil" unless latmax
-      raise ArgumentError, "lonmax must not be nil" unless lonmax
+      raise ArgumentError, 'latmin must not be nil' unless latmin
+      raise ArgumentError, 'lonmin must not be nil' unless lonmin
+      raise ArgumentError, 'latmax must not be nil' unless latmax
+      raise ArgumentError, 'lonmax must not be nil' unless lonmax
       @latmin = latmin
       @lonmin = lonmin
       @latmax = latmax

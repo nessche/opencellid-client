@@ -20,8 +20,8 @@ module Opencellid
     # @return [Error] the error object created by parsing the XML element
     def self.from_element(element)
       return nil unless element
-      raise ArgumentError, "element must be of type XEXML::Element" unless element.is_a? REXML::Element
-      raise ArgumentError, "element must be an <err>" unless element.name == "err"
+      raise ArgumentError, 'element must be of type XEXML::Element' unless element.is_a? REXML::Element
+      raise ArgumentError, 'element must be an <err>' unless element.name == 'err'
       attrs = element.attributes
       return Error.new(::Opencellid.to_i_or_nil(attrs['code']),attrs['info'])
     end

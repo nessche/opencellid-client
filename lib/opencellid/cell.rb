@@ -27,8 +27,8 @@ module Opencellid
     # @return [Cell] the Cell object obtained by parsing the XML
     def self.from_element(element)
       return nil unless element
-      raise ArgumentError, "element must be of type XEXML::Element" unless element.is_a? REXML::Element
-      raise ArgumentError, "element must be a <cell>" unless element.name == "cell"
+      raise ArgumentError, 'element must be of type XEXML::Element' unless element.is_a? REXML::Element
+      raise ArgumentError, 'element must be a <cell>' unless element.name == 'cell'
       attrs = element.attributes
 
       result = Cell.new(::Opencellid.to_i_or_nil(attrs['cellId']), ::Opencellid.to_i_or_nil(attrs['mnc']),
@@ -59,7 +59,7 @@ module Opencellid
     # with the library cell querying functions
     # @return [Hash] a hash object containing the non nil parameters which can be used in while querying for cells
     def to_query_hash
-      {cellid: id, mnc: mnc, mcc: mcc, lac: lac}.delete_if {|k,v| v.nil?}
+      {cellid: id, mnc: mnc, mcc: mcc, lac: lac}.delete_if {|_,v| v.nil?}
     end
 
     # Returns an array containing the longitude and latitude of the cell, this method makes the Cell

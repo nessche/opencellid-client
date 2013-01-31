@@ -7,7 +7,7 @@ module Opencellid
 
     # The format used by the OpenCellId API to pass date/time information
     # @private
-    DATE_FORMAT = "%a %b %d %H:%M:%S %z %Y"
+    DATE_FORMAT = '%a %b %d %H:%M:%S %z %Y'
 
     attr_accessor :lat, :lon, :taken_by, :taken_on, :id, :signal
 
@@ -26,8 +26,8 @@ module Opencellid
     # @return [Measure] the Measure object obtained by parsing the XML
     def self.from_element(element)
       return nil unless element
-      raise ArgumentError, "element must be of type XEXML::Element" unless element.is_a? REXML::Element
-      raise ArgumentError, "element must be a <measure>" unless element.name == "measure"
+      raise ArgumentError, 'element must be of type XEXML::Element' unless element.is_a? REXML::Element
+      raise ArgumentError, 'element must be a <measure>' unless element.name == 'measure'
       attrs = element.attributes
       date = attrs['takenOn']
       date ||= attrs['measured_at']
