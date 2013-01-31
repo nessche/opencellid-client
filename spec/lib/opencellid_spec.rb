@@ -13,46 +13,46 @@ module Opencellid
       Response.stub(:from_xml).and_return(@response)
     end
 
-    describe "execute_request_and_parse_response" do
+    describe 'exec_req_and_parse_response' do
 
       before do
-        @method = @oci.method(:execute_request_and_parse_response)
+        @method = @oci.method(:exec_req_and_parse_response)
 
       end
 
-      context "when the api key is specified" do
+      context 'when the api key is specified' do
 
         before do
-          @oci = Opencellid.new "myapikey"
-          @method = @oci.method(:execute_request_and_parse_response)
+          @oci = Opencellid.new 'myapikey'
+          @method = @oci.method(:exec_req_and_parse_response)
         end
 
-        it "should add it to the parameters" do
+        it 'should add it to the parameters' do
           @method.call("/")
-          WebMock.should have_requested(:get, "www.opencellid.org/")
-                         .with(query: { "key" => "myapikey"})
+          WebMock.should have_requested(:get, 'www.opencellid.org/')
+                         .with(query: { 'key' => 'myapikey'})
         end
 
       end
 
-      context "when the api key is not specified" do
+      context 'when the api key is not specified' do
 
-        it "should not add it to the parameters" do
-          @method.call("/")
-          WebMock.should have_requested(:get, "www.opencellid.org/")
+        it 'should not add it to the parameters' do
+          @method.call('/')
+          WebMock.should have_requested(:get, 'www.opencellid.org/')
         end
 
       end
 
-      it "should add the params as query params" do
+      it 'should add the params as query params' do
 
-        @method.call("/",{"a" => "10", "b" => "20", "c" => "30"})
-        WebMock.should have_requested(:get, "www.opencellid.org/")
+        @method.call('/',{"a" => "10", "b" => "20", "c" => "30"})
+        WebMock.should have_requested(:get, 'www.opencellid.org/')
                        .with(query: {"a" => "10", "b" => "20", "c" => "30"})
       end
 
-      it "should set the path correctly" do
-        @method.call("/mypath")
+      it 'should set the path correctly' do
+        @method.call('/mypath')
         WebMock.should have_requested(:get, "www.opencellid.org/mypath")
       end
 
