@@ -2,7 +2,7 @@ OpenCellID Client Library
 =========================
 
 
-[![Build Status](https://travis-ci.org/nessche/opencellid-client.png)](https://travis-ci.org/nessche/opencellid-client)
+[![Gem Version](https://badge.fury.io/rb/opencellid-client.png)](http://badge.fury.io/rb/opencellid-client)[![Build Status](https://travis-ci.org/nessche/opencellid-client.png)](https://travis-ci.org/nessche/opencellid-client)
 
 
 `opencellid-client` is a ruby gem that aims at simplifying the usage of the APIs provided by opencellid.org to transform cell IDs into coordinates.
