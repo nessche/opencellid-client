@@ -34,27 +34,34 @@ module Opencellid
     # @return [Response] the Response object obtained by parsing the XML file
     def self.from_xml(string)
       doc = REXML::Document.new string
-      raise RuntimeError, "Could not parse server response" unless doc and doc.root
+      raise RuntimeError, 'Could not parse server response' unless doc and doc.root
       case doc.root.name
-        when "rsp"
-          response = Response.new(doc.root.attributes['stat'] == "ok")
-          response.measures = []
-          if response.ok?
-            response.cells= doc.root.elements.collect('cell') {|e| Cell.from_element e }
-            response.cell_id = ::Opencellid.to_i_or_nil(doc.root.attributes['cellid'])
-            response.measure_id = ::Opencellid.to_i_or_nil(doc.root.attributes['id'])
-            res = doc.root.elements['res']
-            response.result = res.text if res
-          else
-            response.cells = []
-            response.error =  Error.from_element doc.root.elements['err']
-          end
-        when "measures"
+        when 'rsp'
+          response = Response.parse_response_xml(doc.root)
+        when 'measures'
           response = Response.new true
           response.measures = doc.root.elements.collect('measure') {|e| Measure.from_element e }
           response.cells = []
       else
-        raise RuntimeError, "The server response does not contain a valid response"
+        raise RuntimeError, 'The server response does not contain a valid response'
+      end
+      response
+    end
+
+private
+
+    def self.parse_response_xml(root)
+      response = Response.new(root.attributes['stat'] == "ok")
+      response.measures = []
+      if response.ok?
+        response.cells= root.elements.collect('cell') {|e| Cell.from_element e }
+        response.cell_id = ::Opencellid.to_i_or_nil(root.attributes['cellid'])
+        response.measure_id = ::Opencellid.to_i_or_nil(root.attributes['id'])
+        res = root.elements['res']
+        response.result = res.text if res
+      else
+        response.cells = []
+        response.error =  Error.from_element root.elements['err']
       end
       response
     end
